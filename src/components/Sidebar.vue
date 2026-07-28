@@ -104,8 +104,8 @@ export default {
 }
 </script>
 <template>
-<div class="flex flex-col bg-white rounded-lg text-[rgb(46,189,182)] w-[300px] p-10 text-2xl font-bold gap-5">
-    <p>Home</p>
+<div class="flex flex-col bg-black text-white w-[280px] p-10 text-2xl font-bold gap-5  border-r-1 border-r-[rgb(46,189,182)]">
+    <p class="text-3xl">Home</p>
     <p >Reviews</p>
     <div class="flex flex-col gap-3">
     <p>New Releases</p>

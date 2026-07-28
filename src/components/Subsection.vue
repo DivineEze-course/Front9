@@ -11,8 +11,8 @@ export default {
 </script>
 
 <template>
-    <div class="flex items-center gap-2">
-            <div class="p-2 bg-gray-200 rounded-sm">
+    <div class="flex items-center gap-2 hover:scale-102 hover:bg-white/10 p-1 rounded-sm cursor-pointer">
+            <div class="p-2 bg-white/40 backdrop-blur-lg border border border-white/20 shadow-xl overflow-hidden transition hover:scale-102 hover:bg-white/25 rounded-sm ">
             <img :src="`icons/${icon}`" class="w-[20px]">
             </div>
             <p>{{text}}</p>

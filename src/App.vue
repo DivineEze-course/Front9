@@ -18,8 +18,11 @@ export default {
 
 <template>
  <NavBar />
+<div class="flex">
  <Sidebar />
  <GameGrid />
+
+ </div>
 </template>
 
 <style >
