@@ -11,7 +11,10 @@ export default {
         },
 
     data() {
-        return {      
+        return {    
+            search:"",
+            
+
         currentCategory :{
             name:"All",
             value: "",
@@ -31,7 +34,7 @@ export default {
 </script>
 
 <template>
- <NavBar />
+ <NavBar :search="search" @updateSearch="search = $event"/>
 <div class="flex bg-black">
  <Sidebar />
  <div class="">
@@ -45,6 +48,7 @@ export default {
     @updateGenres="currentGenres = $event"
 />
 <GameGrid
+    :search="search"
     :category="currentCategory"
     :platform="currentPlatform"
     :genre="currentGenres"

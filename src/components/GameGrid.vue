@@ -6,6 +6,7 @@ import GameCard from './GameCard.vue';
 export default {
     data(){
         return{
+            
             games:[],
             loading: true
         }
@@ -41,7 +42,8 @@ export default {
     props: [
     'category',
     'platform',
-    'genre'
+    'genre',
+    'search'
     ],
 
     watch: {
@@ -56,6 +58,13 @@ export default {
     category() {
         this.fetchGames();
     }
+},
+computed: {
+    filteredGames(){
+        return this.games.filter(game =>
+            game.title.toLowerCase().includes(this.search.toLowerCase())
+        )
+    }
 }
 
 }
@@ -67,7 +76,7 @@ export default {
 
 
 <div  class="flex lg:grid grid-cols-4 gap-6  mt-10 ">
-<div v-for="game in games" :key="game.id">
+<div v-for="game in filteredGames" :key="game.id">
 <GameCard :title="game.title" :genre="game.genre" :platforms="game.platform" :thumbnail="game.thumbnail" :description="game.short_description" />
 </div>
 </div>
