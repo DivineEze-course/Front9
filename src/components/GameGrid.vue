@@ -1,7 +1,7 @@
 <script>
 import { getGames } from '../../api/games';
 import Header from './Header.vue';
-import Filters from './Filters.vue';
+
 import GameCard from './GameCard.vue';
 export default {
     data(){
@@ -11,13 +11,52 @@ export default {
         }
     },
 
+    methods: {
+       async fetchGames() {
+    const filters = {};
+
+    if (this.platform?.value) {
+        filters.platform = this.platform.value;
+    }
+
+    if (this.genre?.value) {
+        filters.category = this.genre.value;
+    }
+
+    if (this.category?.value) {
+        filters["sort-by"] = this.category.value;
+    }
+
+    this.games = await getGames(filters);
+}
+    },
+
     async mounted() {
-        this.games = await getGames();
-        this.loading = false;
+        await this.fetchGames();
+    this.loading = false;
     },
     components:{
-        Header,Filters,GameCard
+        Header,GameCard
+    },
+    props: [
+    'category',
+    'platform',
+    'genre'
+    ],
+
+    watch: {
+    platform() {
+        this.fetchGames();
+    },
+
+    genre() {
+        this.fetchGames();
+    },
+
+    category() {
+        this.fetchGames();
     }
+}
 
 }
 </script>
@@ -25,6 +64,7 @@ export default {
 <template>
     <div class="bg-black w-full p-5">
 <Header />
+
 
 <div  class="flex lg:grid grid-cols-4 gap-6  mt-10 ">
 <div v-for="game in games" :key="game.id">
@@ -34,15 +74,3 @@ export default {
 </div>
 
 </template>
-<!-- <div
-    v-for="game in games"
-    :key="game.id"
->
-    <img :src="game.thumbnail">
-
-    <h2>{{ game.title }}</h2>
-
-    <p>{{ game.genre }}</p>
-
-    <p>{{ game.platform }}</p>
-</div> -->
