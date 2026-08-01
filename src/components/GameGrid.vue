@@ -1,6 +1,5 @@
 <script>
 import { getGames } from '../../api/games';
-import Header from './Header.vue';
 
 import GameCard from './GameCard.vue';
 export default {
@@ -37,7 +36,7 @@ export default {
     this.loading = false;
     },
     components:{
-        Header,GameCard
+       GameCard
     },
     props: [
     'category',
@@ -71,11 +70,10 @@ computed: {
 </script>
 
 <template>
-    <div class="bg-black w-full p-5">
-<Header />
+    <div class="bg-black w-full pt-5 ps-5 pe-5 lg:pe-0 lg:ps-0">
 
 
-<div  class="flex lg:grid grid-cols-4 gap-6  mt-10 ">
+<div  class="flex flex-col tems-center justify-center lg:grid grid-cols-4 gap-6 ">
 <div v-for="game in filteredGames" :key="game.id">
 <GameCard :title="game.title" :genre="game.genre" :platforms="game.platform" :thumbnail="game.thumbnail" :description="game.short_description" />
 </div>

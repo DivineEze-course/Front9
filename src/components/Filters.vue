@@ -103,7 +103,7 @@ export default{
 </script>
 
 <template>
-    <div class="flex gap-3 ">
+    <div class="flex gap-3 mt-5 justify-center lg:justify-normal">
         <FilterBtns :name="currentCategory.name" order="Sort by:" :dropdownItems="categories" @toggle="toggleDropdown('categories')" :boolean="openDropdown === 'categories'" @select="selectCategory"/>
         <FilterBtns :name="currentPlatform.name" :dropdownItems="platform" @toggle="toggleDropdown('platform')" :boolean="openDropdown === 'platform'" @select="selectPlatform"/>
         <FilterBtns :name="currentGenres.name" :dropdown-items="genres" @toggle="toggleDropdown('genres')" :boolean="openDropdown === 'genres'" @select="selectGenres"/>

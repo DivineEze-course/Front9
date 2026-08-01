@@ -1,13 +1,15 @@
 <script>
 import NavBar from './components/NavBar.vue';
+import Header from './components/Header.vue';
 import Sidebar from './components/Sidebar.vue';
 import GameGrid from './components/GameGrid.vue';
 import Filters from './components/Filters.vue';
+import MobileNav from './components/MobileNav.vue';
 
 export default {
     
     components: {
-            NavBar, Sidebar, GameGrid, Filters
+            NavBar, Sidebar, GameGrid, Filters, Header,MobileNav
         },
 
     data() {
@@ -16,28 +18,38 @@ export default {
             
 
         currentCategory :{
-            name:"All",
+            name:"",
             value: "",
         },
          currentPlatform  :{
-            name:"All Platforms",
+            name:"Platforms",
             value: "",
         },
          currentGenres :{
-            name: "All Genre",
+            name: "Genre",
             value: "",
         },
-        
+        showBar :false
     }
+    },
+
+     methods: {
+        toggleBar(){
+            this.showBar = !this.showBar
+            console.log(this.showBar)
+        }
     }
 }
 </script>
 
 <template>
- <NavBar :search="search" @updateSearch="search = $event"/>
+    <div class="bg-black relative">
+ <NavBar :search="search" @updateSearch="search = $event" @toggleBar="toggleBar()"/>
 <div class="flex bg-black">
+    <MobileNav :showBar="showBar" @close="showBar = false"/>
  <Sidebar />
  <div class="">
+    <Header />
 <Filters
     :currentCategory="currentCategory"
     :currentPlatform="currentPlatform"
@@ -54,6 +66,7 @@ export default {
     :genre="currentGenres"
 />
 </div>
+ </div>
  </div>
 </template>
 
