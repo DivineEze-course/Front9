@@ -10,3 +10,12 @@ export async function getGames(filters = {}) {
     
     return response.data
 }
+export async function getGame(id) {
+    const response = await api.get("/game",{
+        params: {
+            id : id
+        }
+    });
+    return response.data
+
+}

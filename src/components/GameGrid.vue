@@ -1,5 +1,6 @@
 <script>
 import { getGames } from '../../api/games';
+import { RouterLink } from 'vue-router';
 
 import GameCard from './GameCard.vue';
 export default {
@@ -36,7 +37,7 @@ export default {
     this.loading = false;
     },
     components:{
-       GameCard
+       GameCard,RouterLink
     },
     props: [
     'category',
@@ -74,9 +75,13 @@ computed: {
 
 
 <div  class="flex flex-col tems-center justify-center lg:grid grid-cols-4 gap-6 ">
-<div v-for="game in filteredGames" :key="game.id">
-<GameCard :title="game.title" :genre="game.genre" :platforms="game.platform" :thumbnail="game.thumbnail" :description="game.short_description" />
-</div>
+<RouterLink 
+v-for="game in filteredGames" 
+:key="game.id" 
+:to="`/game/${game.id}`">
+<GameCard :title="game.title" :genre="game.genre" :platforms="game.platform"
+ :thumbnail="game.thumbnail" :short_description="game.short_description" />
+</RouterLink>
 </div>
 </div>
 

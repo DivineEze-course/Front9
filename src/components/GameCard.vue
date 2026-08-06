@@ -5,7 +5,7 @@ export default {
 
         }
     },
-    props:['title','thumbnail','platforms', 'genre', 'description'],
+    props:['title','thumbnail','platforms', 'genre', 'short_description'],
     methods: {
         getPlatformIcon(platform){
             switch (platform) {
@@ -40,7 +40,7 @@ export default {
         {{ title }} 
     </div>
     <div class="text-white/60">
-        {{ descriptionShort(description) }}
+        {{ descriptionShort(short_description) }}
     </div>
     <div class="flex justify-between items-center">
         <div>
