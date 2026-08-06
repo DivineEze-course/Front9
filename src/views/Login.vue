@@ -1,5 +1,28 @@
 <script>
-</script>
+import { supabase } from '../lib/supabase.js'
+export default {
+data(){
+    return {
+        email: "",
+        password: "",
+        loading: false
+    }
+
+},
+methods: {
+async login() {
+
+    if(this.email && this.password){
+        this.loading = true;
+       const {data,error} = await supabase.auth.signInWithPassword({
+            email: this.email,
+            password: this.password
+        });
+    }
+}
+}
+
+}</script>
 <template>
     <div class="flex bg-black text-white h-screen ">
         <div class="lg:ms-40 flex gap-20 items-center ">
@@ -16,11 +39,11 @@
         <div class="flex flex-col gap-6 ">
             <div>
                 <p>Email</p>
-            <input type="email" placeholder="Email" class=" w-full h-10 bg-gray-200  p-2 text-gray-700 placeholder:text-gray-500 border  rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[rgb(46,189,182)]"/>
+            <input v-model="email" type="email" placeholder="Email" class=" w-full h-10 bg-gray-200  p-2 text-gray-700 placeholder:text-gray-500 border  rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[rgb(46,189,182)]"/>
             </div>
             <div>
                 <p>Password</p>
-            <input type="password" placeholder="Password" class=" w-full h-10 bg-gray-200  p-2 text-gray-700 placeholder:text-gray-500 border  rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[rgb(46,189,182)]"/>
+            <input v-model="password" type="password" placeholder="Password" class=" w-full h-10 bg-gray-200  p-2 text-gray-700 placeholder:text-gray-500 border  rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[rgb(46,189,182)]"/>
             </div>
             <div class="flex justify-between items-center">
                 <p>Dont have an account? <RouterLink to="/signup" class="text-[rgb(46,189,182)]">Sign Up</RouterLink></p>
