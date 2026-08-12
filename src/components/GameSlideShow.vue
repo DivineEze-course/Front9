@@ -37,6 +37,8 @@ export default {
     v-if="games.length"
     class="relative w-[80%] h-[600px] overflow-hidden rounded-2xl shadow-md shadow-[rgb(46,189,182)] :hover:scale-105 transition cursor-pointer"
   >
+
+    <RouterLink :to="`/game/${games[currentIndex].id}`">
     <img
       :src="games[currentIndex].thumbnail"
       :alt="games[currentIndex].title"
@@ -79,5 +81,6 @@ export default {
         "
       ></button>
     </div>
+    </RouterLink>
   </section>
 </template>

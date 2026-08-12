@@ -6,8 +6,9 @@ import GameCard from './GameCard.vue';
 export default {
     data(){
         return{
-            
+        
             games:[],
+            gamesToShow:6,
             loading: true
         }
     },
@@ -64,7 +65,11 @@ computed: {
         return this.games.filter(game =>
             game.title.toLowerCase().includes(this.search.toLowerCase())
         )
+    },
+    displayedGames(){
+        return this.filteredGames.slice(0,this.gamesToShow)
     }
+   
 }
 
 }
@@ -72,17 +77,20 @@ computed: {
 
 <template>
     <div class="bg-black w-full pt-5 ps-5 pe-5 lg:pe-0 lg:ps-0">
-
-
 <div  class="flex flex-col tems-center justify-center lg:grid grid-cols-3 gap-6 ">
 <RouterLink 
-v-for="game in filteredGames" 
+v-for="game in displayedGames" 
 :key="game.id" 
 :to="`/game/${game.id}`">
 <GameCard :title="game.title" :genre="game.genre" :platforms="game.platform"
  :thumbnail="game.thumbnail" :short_description="game.short_description" />
 </RouterLink>
 </div>
+<div class="flex justify-center mt-9">
+    <div class="pe-9 ps-9 p-3 bg-[rgb(46,189,182)]  flex rounded-lg cursor-pointer hover:bg-[rgb(46,189,182)]/50  text-white"  @click="gamesToShow += 3">
+ <p  class="text-center">Show More</p>
+ </div>
+ </div>
 </div>
 
 </template>
