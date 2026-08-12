@@ -36,7 +36,7 @@ export default{
                 },
             ],
             genres:[
-                {name: 'Genres',
+                {name: 'Genre',
                 value: ''
                 },
                 {name: 'Shooter',

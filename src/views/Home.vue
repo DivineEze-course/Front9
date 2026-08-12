@@ -5,11 +5,11 @@ import Sidebar from '../components/Sidebar.vue';
 import GameGrid from '../components/GameGrid.vue';
 import Filters from '../components/Filters.vue';
 import MobileNav from '../components/MobileNav.vue';
-
+import GameSlideShow from '../components/GameSlideShow.vue';
 export default {
     
     components: {
-            NavBar, Sidebar, GameGrid, Filters, Header, MobileNav
+            NavBar, Sidebar, GameGrid, Filters, Header, MobileNav, GameSlideShow
         },
 
     data() {
@@ -46,8 +46,12 @@ export default {
     <div class="bg-black relative h-screen">
  <NavBar :search="search" @updateSearch="search = $event" @toggleBar="toggleBar()"/>
  <MobileNav :showBar="showBar" @close="showBar = false"/>
-<div class="flex lg:hidden bg-black">
- <div class="">
+
+<div class="flex flex-col lg:hidden bg-black">
+     <div class="p-4">
+ <GameSlideShow />
+ </div>
+ <div class="flex flex-col">
     <Header />
 <Filters
     :currentCategory="currentCategory"
@@ -68,8 +72,11 @@ export default {
 </div>
  </div>
 
- <div class="hidden lg:flex justify-center  bg-black p-5">
- <div class="flex gap-15">
+ <div class="hidden lg:flex flex-col justify-center gap-10 bg-black p-5">
+     <div class="p-4 flex justify-center">
+ <GameSlideShow />
+ </div>
+ <div class="flex gap-15 justify-center">
     <div>
 <Filters
     :currentCategory="currentCategory"

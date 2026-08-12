@@ -1,0 +1,83 @@
+<script>
+import { getGames } from "../../api/games";
+export default {
+  data() {
+    return { games: [], currentIndex: 0, timer: null };
+  },
+  async mounted() {
+    this.games = await getGames();
+    this.games = this.games.slice(3, 8);
+    this.startSlideshow();
+  },
+  beforeUnmount() {
+    clearInterval(this.timer);
+  },
+  methods: {
+    nextGame() {
+      this.currentIndex = (this.currentIndex + 1) % this.games.length;
+    },
+    previousGame() {
+      this.currentIndex =
+        (this.currentIndex - 1 + this.games.length) % this.games.length;
+    },
+    goToGame(index) {
+      this.currentIndex = index;
+    },
+    startSlideshow() {
+      this.timer = setInterval(() => {
+        this.nextGame();
+      }, 5000);
+    },
+  },
+};
+</script>
+
+<template>
+  <section
+    v-if="games.length"
+    class="relative w-[80%] h-[600px] overflow-hidden rounded-2xl shadow-md shadow-[rgb(46,189,182)] :hover:scale-105 transition cursor-pointer"
+  >
+    <img
+      :src="games[currentIndex].thumbnail"
+      :alt="games[currentIndex].title"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="absolute inset-0 flex flex-col justify-end p-8">
+      <h2 class="text-4xl font-bold text-white w-[350px]">
+        {{ games[currentIndex].title }}
+      </h2>
+      <RouterLink
+        :to="`/game/${games[currentIndex].id}`"
+        class="mt-4 w-fit rounded-lg bg-[rgb(46,189,182)] px-5 py-2 font-bold text-white hover:scale-105 transition"
+      >
+        View Game
+      </RouterLink>
+    </div>
+    <button
+      @click="previousGame"
+      class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-3 text-white hover:bg-black/70"
+    >
+      ←
+    </button>
+    <button
+      @click="nextGame"
+      class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-3 text-white hover:bg-black/70"
+    >
+      →
+    </button>
+    <div class="absolute bottom-5 right-8 flex gap-2">
+      <button
+        v-for="(game, index) in games"
+        :key="game.id"
+        @click="goToGame(index)"
+        class="h-2 rounded-full transition-all"
+        :class="
+          index === currentIndex
+            ? 'w-8 bg-[rgb(46,189,182)]'
+            : 'w-2 bg-white/60'
+        "
+      ></button>
+    </div>
+  </section>
+</template>
