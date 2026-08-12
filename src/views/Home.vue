@@ -6,10 +6,11 @@ import GameGrid from '../components/GameGrid.vue';
 import Filters from '../components/Filters.vue';
 import MobileNav from '../components/MobileNav.vue';
 import GameSlideShow from '../components/GameSlideShow.vue';
+import GameSkeleton from '@/components/GameSkeleton.vue';
 export default {
     
     components: {
-            NavBar, Sidebar, GameGrid, Filters, Header, MobileNav, GameSlideShow
+            NavBar, Sidebar, GameGrid, Filters, Header, MobileNav, GameSlideShow,GameSkeleton
         },
 
     data() {

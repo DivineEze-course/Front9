@@ -2,9 +2,10 @@
 import { getGame } from "../../api/games";
 import NavBar from "../components/NavBar.vue";
 import GameFull from "../components/GameFull.vue";
+import GameSkeleton from '../components/GameSkeleton.vue';
 export default {
     components: {
-        NavBar,GameFull
+        NavBar,GameFull,GameSkeleton
     },
     data(){
         return{
@@ -44,11 +45,13 @@ async mounted(){
 </script>
 
 <template>
-    <div class=" bg-black">
-    <div v-if="loading">
-        <p>Loading...</p>
+    <div v-if="loading" class=" flex flex-col h-screen bg-black gap-10 p-6 lg:p-10">
+        <GameSkeleton/>
+        <GameSkeleton/>
     </div>
-    <div v-else class="">
+    <div v-else class="bg-black h-full">
+    
+    <div class="">
         <NavBar :search="search" @updateSearch="search = $event" @toggleBar="toggleBar()"/>
         <div class="flex justify-center items-center">
         <GameFull 

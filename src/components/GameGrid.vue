@@ -3,6 +3,7 @@ import { getGames } from '../../api/games';
 import { RouterLink } from 'vue-router';
 
 import GameCard from './GameCard.vue';
+import GameSkeleton from './GameSkeleton.vue';
 export default {
     data(){
         return{
@@ -38,7 +39,7 @@ export default {
     this.loading = false;
     },
     components:{
-       GameCard,RouterLink
+       GameCard,RouterLink,GameSkeleton
     },
     props: [
     'category',
@@ -77,7 +78,11 @@ computed: {
 
 <template>
     <div class="bg-black w-full pt-5 ps-5 pe-5 lg:pe-0 lg:ps-0 mb-5">
-<div  class="flex flex-col tems-center justify-center lg:grid grid-cols-3 gap-6 ">
+        <div v-if="loading" class="flex flex-col gap-4 lg:grid grid-cols-3 lg:w-[1000px]">
+        <GameSkeleton v-for="n in 6" :key="n" />
+    </div>   
+<div v-else class="flex flex-col tems-center justify-center lg:grid grid-cols-3 gap-6 ">
+     
 <RouterLink 
 v-for="game in displayedGames" 
 :key="game.id" 
@@ -91,6 +96,7 @@ v-for="game in displayedGames"
  <p class="text-center">Show More</p>
  </div>
  </div>
-</div>
+    </div>
+
 
 </template>
