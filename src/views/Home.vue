@@ -72,7 +72,7 @@ export default {
 </div>
  </div>
 
- <div class="hidden lg:flex flex-col justify-center gap-10 bg-black p-5">
+ <div class="hidden lg:flex flex-col justify-center gap-10 bg-black p-5 ">
      <div class="p-4 flex justify-center">
  <GameSlideShow />
  </div>

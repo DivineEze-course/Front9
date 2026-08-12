@@ -6,7 +6,7 @@ export default {
   },
   async mounted() {
     this.games = await getGames();
-    this.games = this.games.slice(3, 8);
+    this.games = this.games.slice(4, 9);
     this.startSlideshow();
   },
   beforeUnmount() {
@@ -35,39 +35,41 @@ export default {
 <template>
   <section
     v-if="games.length"
-    class="relative w-[80%] h-[600px] overflow-hidden rounded-2xl shadow-md shadow-[rgb(46,189,182)] :hover:scale-105 transition cursor-pointer"
+    class="relative lg:w-[80%] h-[300px] lg:h-[600px] overflow-hidden rounded-2xl shadow-md shadow-[rgb(46,189,182)] :hover:scale-105 transition cursor-pointer"
   >
 
     <RouterLink :to="`/game/${games[currentIndex].id}`">
     <img
       :src="games[currentIndex].thumbnail"
       :alt="games[currentIndex].title"
-      class="absolute inset-0 w-full h-full object-cover"
+      class="absolute inset-0 w-full h-full lg:object-cover"
     />
     <div class="absolute inset-0 bg-black/50"></div>
-    <div class="absolute inset-0 flex flex-col justify-end p-8">
-      <h2 class="text-4xl font-bold text-white w-[350px]">
+    <div class="absolute inset-0 flex flex-col justify-end p-3 lg:p-8">
+      <h2 class="text-xl lg:text-4xl font-bold text-white w-[150px] lg:w-[350px] ">
         {{ games[currentIndex].title }}
       </h2>
       <RouterLink
         :to="`/game/${games[currentIndex].id}`"
-        class="mt-4 w-fit rounded-lg bg-[rgb(46,189,182)] px-5 py-2 font-bold text-white hover:scale-105 transition"
+        class="hidden lg:block mt-4 w-fit rounded-lg bg-[rgb(46,189,182)] px-5 py-2 font-bold text-white hover:scale-105 transition"
       >
         View Game
       </RouterLink>
     </div>
+    </RouterLink>
     <button
       @click="previousGame"
-      class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-3 text-white hover:bg-black/70"
+      class="hidden lg:block absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-3 text-white hover:bg-black/70"
     >
       ←
     </button>
     <button
       @click="nextGame"
-      class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-3 text-white hover:bg-black/70"
+      class=" hidden lg:block absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-3 text-white hover:bg-black/70"
     >
       →
     </button>
+    
     <div class="absolute bottom-5 right-8 flex gap-2">
       <button
         v-for="(game, index) in games"
@@ -81,6 +83,6 @@ export default {
         "
       ></button>
     </div>
-    </RouterLink>
+    
   </section>
 </template>

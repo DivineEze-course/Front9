@@ -76,7 +76,7 @@ computed: {
 </script>
 
 <template>
-    <div class="bg-black w-full pt-5 ps-5 pe-5 lg:pe-0 lg:ps-0">
+    <div class="bg-black w-full pt-5 ps-5 pe-5 lg:pe-0 lg:ps-0 mb-5">
 <div  class="flex flex-col tems-center justify-center lg:grid grid-cols-3 gap-6 ">
 <RouterLink 
 v-for="game in displayedGames" 
@@ -86,9 +86,9 @@ v-for="game in displayedGames"
  :thumbnail="game.thumbnail" :short_description="game.short_description" />
 </RouterLink>
 </div>
-<div class="flex justify-center mt-9">
+<div class="flex justify-center mt-9 " v-if="filteredGames.length > gamesToShow">
     <div class="pe-9 ps-9 p-3 bg-[rgb(46,189,182)]  flex rounded-lg cursor-pointer hover:bg-[rgb(46,189,182)]/50  text-white"  @click="gamesToShow += 3">
- <p  class="text-center">Show More</p>
+ <p class="text-center">Show More</p>
  </div>
  </div>
 </div>
