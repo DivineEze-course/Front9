@@ -74,7 +74,7 @@ computed: {
     <div class="bg-black w-full pt-5 ps-5 pe-5 lg:pe-0 lg:ps-0">
 
 
-<div  class="flex flex-col tems-center justify-center lg:grid grid-cols-4 gap-6 ">
+<div  class="flex flex-col tems-center justify-center lg:grid grid-cols-3 gap-6 ">
 <RouterLink 
 v-for="game in filteredGames" 
 :key="game.id" 

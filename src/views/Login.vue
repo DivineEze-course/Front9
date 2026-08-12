@@ -11,7 +11,7 @@ data(){
     }
 
 },
-methods: {
+methods: {  
 async login() {
 if(!this.email || !this.password){
     alert("Please fill in all fields.");
@@ -48,14 +48,14 @@ this.loading = true;
     this.loading = false;
     
  }
-
    
 }
 }
 
-}</script>
+}
+</script>
 <template>
-    <div class="flex bg-black text-white h-screen ">
+    <div class="flex bg-black bg-contain text-white h-screen ">
         <div class="lg:ms-40 flex gap-20 items-center ">
         <div>
             <img src="../assets/images/Zombie.png" class="w-[300px] hidden lg:block  lg:w-[500px] m-auto" alt="Zombie Image">

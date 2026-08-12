@@ -45,9 +45,8 @@ export default {
 <template>
     <div class="bg-black relative h-screen">
  <NavBar :search="search" @updateSearch="search = $event" @toggleBar="toggleBar()"/>
-<div class="flex bg-black">
-    <MobileNav :showBar="showBar" @close="showBar = false"/>
- <Sidebar />
+ <MobileNav :showBar="showBar" @close="showBar = false"/>
+<div class="flex lg:hidden bg-black">
  <div class="">
     <Header />
 <Filters
@@ -58,6 +57,7 @@ export default {
     @updateCategory="currentCategory = $event"
     @updatePlatform="currentPlatform = $event"
     @updateGenres="currentGenres = $event"
+    
 />
 <GameGrid
     :search="search"
@@ -65,6 +65,31 @@ export default {
     :platform="currentPlatform"
     :genre="currentGenres"
 />
+</div>
+ </div>
+
+ <div class="hidden lg:flex justify-center  bg-black p-5">
+ <div class="flex gap-15">
+    <div>
+<Filters
+    :currentCategory="currentCategory"
+    :currentPlatform="currentPlatform"
+    :currentGenres="currentGenres"
+
+    @updateCategory="currentCategory = $event"
+    @updatePlatform="currentPlatform = $event"
+    @updateGenres="currentGenres = $event"
+/>
+</div>
+<div>
+<Header />
+<GameGrid
+    :search="search"
+    :category="currentCategory"
+    :platform="currentPlatform"
+    :genre="currentGenres"
+/>
+</div>
 </div>
  </div>
  </div>
