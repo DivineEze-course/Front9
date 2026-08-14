@@ -55,12 +55,12 @@ this.loading = true;
 }
 </script>
 <template>
-    <div class="flex bg-black bg-contain text-white h-screen ">
-        <div class="lg:ms-40 flex gap-20 items-center ">
+    <div class="bg-black text-white h-screen flex justify-center items-center">
+        <div class="lg:ms-40  gap-20 items-center">
         <div>
             <img src="../assets/images/Zombie.png" class="w-[300px] hidden lg:block  lg:w-[500px] m-auto" alt="Zombie Image">
         </div>
-    <div class="bg-black p-4 flex flex-col gap-10 mt-40 lg:mt-0 rounded-xl backdrop-blur-lg shadow-xl  w-[300px] lg:w-[400px]">
+    <div class="bg-black p-4 flex flex-col gap-10  lg:mt-0 rounded-xl backdrop-blur-lg shadow-xl  w-[300px] lg:w-[400px]">
         <div class="flex flex-col justify-center items-center">
         <img src="../assets/images/logo/Front9-dark.png" class="w-[200px] items-center justify-center m-auto" alt="Front9 Logo">
         <p>Login to access the catlogue</p>
