@@ -21,6 +21,9 @@ const router = createRouter({
             path: "/game/:id",
             name: "GameDetails",
             component: GameDetails,
+            meta: {
+        requiresAuth: true
+    }
         },
         {
             path: "/browse",
