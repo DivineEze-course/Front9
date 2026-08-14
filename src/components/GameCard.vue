@@ -31,7 +31,7 @@ export default {
 }
 </script>
 <template>
-<div class="flex flex-col gap-3 bg-white/20 backdrop-blur-lg border border border-white/20 shadow-xl overflow-hidden transition hover:scale-102 hover:bg-white/15 p-3 rounded-lg w-full lg:w-[280px] cursor-pointer">
+<div class="flex flex-col gap-3 bg-white/20 backdrop-blur-lg border border border-white/20 shadow-xs  shadow-[rgb(46,189,182)] overflow-hidden transition hover:scale-102 hover:bg-white/15 p-3 rounded-lg w-full lg:w-[280px] cursor-pointer">
     <div class="w-full rounded-md">
         <img :src="thumbnail" class="rounded-md" :alt="title">
     </div>

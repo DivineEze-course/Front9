@@ -52,72 +52,150 @@ export default {
 
         }
         
+    },
+    computed: {
+    isSearching() {
+        return this.search.trim().length > 0;
     }
+}
 }
 </script>
 
 <template>
-    <div class="bg-black relative h-screen">
- <NavBar :search="search" @updateSearch="search = $event" @toggleBar="toggleBar()"/>
- <MobileNav :showBar="showBar" @close="showBar = false" @showLogoutModal="showLogoutModal = true"/>
+    <div class="bg-black min-h-screen">
 
-<div class="flex flex-col lg:hidden bg-black">
-     <div class="p-4">
- <GameSlideShow />
- </div>
- <div class="flex flex-col">
-    <Header />
-<Filters
-    :currentCategory="currentCategory"
-    :currentPlatform="currentPlatform"
-    :currentGenres="currentGenres"
+        <!-- Navbar -->
+        <NavBar
+            :search="search"
+            @updateSearch="search = $event"
+            @toggleBar="toggleBar"
+        />
 
-    @updateCategory="currentCategory = $event"
-    @updatePlatform="currentPlatform = $event"
-    @updateGenres="currentGenres = $event"
-    
-/>
-<GameGrid
-    :search="search"
-    :category="currentCategory"
-    :platform="currentPlatform"
-    :genre="currentGenres"
-/>
-</div>
-<LogoutModal :show="showLogoutModal" @close="showLogoutModal = false" @confirm="logout"/>
- </div>
+        <!-- Mobile navigation -->
+        <MobileNav
+            :showBar="showBar"
+            @close="showBar = false"
+            @showLogoutModal="showLogoutModal = true"
+        />
 
- <div class="hidden lg:flex flex-col justify-center gap-10 bg-black p-5 ">
-     <div class="p-4 flex justify-center">
- <GameSlideShow />
- </div>
- <div class="flex gap-15 justify-center">
-    <div>
-<Filters
-    :currentCategory="currentCategory"
-    :currentPlatform="currentPlatform"
-    :currentGenres="currentGenres"
+        <!-- Logout Modal -->
+        <LogoutModal
+            :show="showLogoutModal"
+            @close="showLogoutModal = false"
+            @confirm="logout"
+        />
 
-    @updateCategory="currentCategory = $event"
-    @updatePlatform="currentPlatform = $event"
-    @updateGenres="currentGenres = $event"
-/>
-</div>
-<div>
-<Header />
-<GameGrid
-    :search="search"
-    :category="currentCategory"
-    :platform="currentPlatform"
-    :genre="currentGenres"
-/>
-</div>
-</div>
-<LogoutModal :show="showLogoutModal" @close="showLogoutModal = false" @confirm="logout"/>
- </div>
- </div>
+
+        <!-- ========================= -->
+        <!-- NORMAL HOMEPAGE -->
+        <!-- ========================= -->
+
+        <div v-if="!isSearching">
+
+            <!-- MOBILE -->
+            <div class="flex flex-col lg:hidden bg-black">
+
+                <div class="p-4">
+                    <GameSlideShow />
+                </div>
+
+                <div class="flex flex-col">
+
+                    <Header />
+
+                    <Filters
+                        :currentCategory="currentCategory"
+                        :currentPlatform="currentPlatform"
+                        :currentGenres="currentGenres"
+
+                        @updateCategory="currentCategory = $event"
+                        @updatePlatform="currentPlatform = $event"
+                        @updateGenres="currentGenres = $event"
+                    />
+
+                    <GameGrid
+                        :search="search"
+                        :category="currentCategory"
+                        :platform="currentPlatform"
+                        :genre="currentGenres"
+                    />
+
+                </div>
+
+            </div>
+
+
+            <!-- DESKTOP -->
+            <div class="hidden lg:flex flex-col justify-center gap-10 bg-black p-5">
+
+                <div class="p-4 flex justify-center">
+                    <GameSlideShow />
+                </div>
+
+                <div class="flex gap-15 justify-center">
+
+                    <div>
+                        <Filters
+                            :currentCategory="currentCategory"
+                            :currentPlatform="currentPlatform"
+                            :currentGenres="currentGenres"
+
+                            @updateCategory="currentCategory = $event"
+                            @updatePlatform="currentPlatform = $event"
+                            @updateGenres="currentGenres = $event"
+                        />
+                    </div>
+
+                    <div>
+                        <Header />
+
+                        <GameGrid
+                            :search="search"
+                            :category="currentCategory"
+                            :platform="currentPlatform"
+                            :genre="currentGenres"
+                        />
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            v-else
+            class="bg-black min-h-screen pt-5 flex gap-15 justify-center"
+        >
+ <div>
+                        <Filters
+                            :currentCategory="currentCategory"
+                            :currentPlatform="currentPlatform"
+                            :currentGenres="currentGenres"
+
+                            @updateCategory="currentCategory = $event"
+                            @updatePlatform="currentPlatform = $event"
+                            @updateGenres="currentGenres = $event"
+                        />
+                    </div>
+            <div class="px-5 lg:px-10">
+
+                <h1 class="text-white text-2xl font-bold mb-6">
+                    Search results for "{{ search }}"
+                </h1>
+
+                <GameGrid
+                    :search="search"
+                    :category="currentCategory"
+                    :platform="currentPlatform"
+                    :genre="currentGenres"
+                />
+
+            </div>
+
+        </div>
+
+    </div>
 </template>
 
-<style >
-
-</style>
