@@ -55,8 +55,8 @@ this.loading = true;
 }
 </script>
 <template>
-    <div class="bg-black text-white h-screen flex justify-center items-center">
-        <div class="lg:ms-40  gap-20 items-center">
+    <div class="bg-black text-white h-screen flex justify-center lg:justify-normal items-center">
+        <div class="lg:ms-40 lg:flex gap-20 items-center">
         <div>
             <img src="../assets/images/Zombie.png" class="w-[300px] hidden lg:block  lg:w-[500px] m-auto" alt="Zombie Image">
         </div>

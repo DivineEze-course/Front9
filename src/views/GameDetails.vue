@@ -53,6 +53,11 @@ async mounted(){
     
     <div class="">
         <NavBar :search="search" @updateSearch="search = $event" @toggleBar="toggleBar()"/>
+        <MobileNav
+            :showBar="showBar"
+            @close="showBar = false"
+            @showLogoutModal="showLogoutModal = true"
+        />
         <div class="flex justify-center items-center">
         <GameFull 
             :title="game?.title"
