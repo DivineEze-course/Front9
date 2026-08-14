@@ -37,6 +37,10 @@ export default {
         this.nextGame();
       }, 5000);
     },
+    resetSlideshow() {
+    clearInterval(this.timer);
+    this.startSlideshow();
+},
     handleTouchStart(event) {
         this.touchStart = event.changedTouches[0].screenX;
     },
@@ -48,14 +52,17 @@ export default {
 
         // Swiped left
         if (distance > 50) {
-            this.nextSlide();
+            this.nextGame();
+            this.resetSlideshow();
         }
 
         // Swiped right
         if (distance < -50) {
-            this.previousSlide();
+            this.previousGame();
+            this.resetSlideshow();
         }
-    }
+    },
+    
   },
   components: {
     GameSkeleton
