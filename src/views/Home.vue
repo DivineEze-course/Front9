@@ -6,16 +6,20 @@ import GameGrid from '../components/GameGrid.vue';
 import Filters from '../components/Filters.vue';
 import MobileNav from '../components/MobileNav.vue';
 import GameSlideShow from '../components/GameSlideShow.vue';
-import GameSkeleton from '@/components/GameSkeleton.vue';
+import GameSkeleton from '../components/GameSkeleton.vue';
+import LogoutModal from '@/components/LogoutModal.vue';
+
+import { useAuthStore } from '../stores/auth';
 export default {
     
     components: {
-            NavBar, Sidebar, GameGrid, Filters, Header, MobileNav, GameSlideShow,GameSkeleton
+            NavBar, Sidebar, GameGrid, Filters, Header, MobileNav, GameSlideShow,GameSkeleton,LogoutModal
         },
 
     data() {
         return {    
             search:"",
+            
             
 
         currentCategory :{
@@ -30,15 +34,24 @@ export default {
             name: "Genre",
             value: "",
         },
-        showBar :false
+        showBar :false,
+        showLogoutModal:false,
     }
     },
 
      methods: {
         toggleBar(){
             this.showBar = !this.showBar
-            console.log(this.showBar)
+           
+        },
+        async logout(){
+            const authstore = useAuthStore()
+            await authstore.logout();
+            this.showLogoutModal = false;
+            this.$router.push('/login')
+
         }
+        
     }
 }
 </script>
@@ -46,7 +59,7 @@ export default {
 <template>
     <div class="bg-black relative h-screen">
  <NavBar :search="search" @updateSearch="search = $event" @toggleBar="toggleBar()"/>
- <MobileNav :showBar="showBar" @close="showBar = false"/>
+ <MobileNav :showBar="showBar" @close="showBar = false" @showLogoutModal="showLogoutModal = true"/>
 
 <div class="flex flex-col lg:hidden bg-black">
      <div class="p-4">
@@ -71,6 +84,7 @@ export default {
     :genre="currentGenres"
 />
 </div>
+<LogoutModal :show="showLogoutModal" @close="showLogoutModal = false" @confirm="logout"/>
  </div>
 
  <div class="hidden lg:flex flex-col justify-center gap-10 bg-black p-5 ">
@@ -99,6 +113,7 @@ export default {
 />
 </div>
 </div>
+<LogoutModal :show="showLogoutModal" @close="showLogoutModal = false" @confirm="logout"/>
  </div>
  </div>
 </template>

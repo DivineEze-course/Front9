@@ -34,8 +34,9 @@ export default{
 
         <div v-if="user" class="flex items-center gap-5 text-white">
             <div class="bg-white/20 rounded-full p-1 cursor-pointer hover:bg-white/15"  ><img src="/icons/stars.svg" class="w-[25px]" alt=""></div>
+            <div class=" rounded-full p-1 cursor-pointer hover:bg-white/15"  ><img src="/icons/bell.svg" class="w-[25px]" alt=""></div>
             <div class=" rounded-full p-1 cursor-pointer hover:bg-white/15" ><img src="/icons/bag2.svg" class="w-[25px]" alt=""></div>
-            <div class=" rounded-full p-1 cursor-pointer hover:bg-white/15" ><img src="/icons/profile2.svg" class="w-[25px]" alt=""></div>
+            <div class=" rounded-full p-1 cursor-pointer hover:bg-white/15" @click="$emit('toggleBar')" ><img src="/icons/profile2.svg" class="w-[25px]" alt=""></div>
 
             
         </div>
