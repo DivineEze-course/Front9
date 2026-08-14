@@ -81,19 +81,23 @@ export default{
        },
        selectCategory(item){
         this.$emit("updateCategory", item);
+        this.openDropdown = false
     },
 
     selectPlatform(item){
         this.$emit("updatePlatform", item);
+        this.openDropdown = false
     },
 
     selectGenres(item){
         this.$emit("updateGenres", item);
+        this.openDropdown = false
     },
     resetFilter(){
          this.$emit("updateCategory", this.categories[0]);
           this.$emit("updatePlatform", this.platform[0]);
           this.$emit("updateGenres", this.genres[0]);
+          this.openDropdown = false
     }
 
     },
