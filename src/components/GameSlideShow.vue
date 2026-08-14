@@ -71,13 +71,13 @@ export default {
     </RouterLink>
     <button
       @click="previousGame"
-      class="hidden lg:block absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-3 text-white hover:bg-black/70"
+      class="hidden lg:block absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-3 text-white hover:bg-black/70 cursor-pointer"
     >
       ←
     </button>
     <button
       @click="nextGame"
-      class=" hidden lg:block absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-3 text-white hover:bg-black/70"
+      class=" hidden lg:block absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-3 text-white hover:bg-black/70 cursor-pointer"
     >
       →
     </button>
