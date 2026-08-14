@@ -7,7 +7,10 @@ export default {
     return { games: [],
          currentIndex: 0,
          loading:true,
-          timer: null };
+          timer: null,
+          touchStart: 0,
+          touchEnd: 0 
+        };
   },
   async mounted() {
     this.games = await getGames();
@@ -34,6 +37,25 @@ export default {
         this.nextGame();
       }, 5000);
     },
+    handleTouchStart(event) {
+        this.touchStart = event.changedTouches[0].screenX;
+    },
+
+    handleTouchEnd(event) {
+        this.touchEnd = event.changedTouches[0].screenX;
+
+        const distance = this.touchStart - this.touchEnd;
+
+        // Swiped left
+        if (distance > 50) {
+            this.nextSlide();
+        }
+
+        // Swiped right
+        if (distance < -50) {
+            this.previousSlide();
+        }
+    }
   },
   components: {
     GameSkeleton
@@ -48,7 +70,10 @@ export default {
   <section
     v-if="games.length"
     class="relative lg:w-[80%] h-[300px] lg:h-[600px] overflow-hidden rounded-2xl shadow-md shadow-[rgb(46,189,182)] :hover:scale-105 transition cursor-pointer"
-  >
+    @touchstart="handleTouchStart"
+    @touchend="handleTouchEnd"
+ 
+    >
 
     <RouterLink :to="`/game/${games[currentIndex].id}`">
     <img
