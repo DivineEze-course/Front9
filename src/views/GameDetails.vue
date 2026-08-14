@@ -3,9 +3,10 @@ import { getGame } from "../../api/games";
 import NavBar from "../components/NavBar.vue";
 import GameFull from "../components/GameFull.vue";
 import GameSkeleton from '../components/GameSkeleton.vue';
+import MobileNav from "../components/MobileNav.vue";
 export default {
     components: {
-        NavBar,GameFull,GameSkeleton
+        NavBar,GameFull,GameSkeleton,MobileNav
     },
     data(){
         return{
