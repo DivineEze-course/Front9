@@ -168,7 +168,7 @@ export default {
             v-else
             class="bg-black min-h-screen pt-5 flex gap-15 justify-center"
         >
- <div>
+ <div class="hidden lg:block">
                         <Filters
                             :currentCategory="currentCategory"
                             :currentPlatform="currentPlatform"
