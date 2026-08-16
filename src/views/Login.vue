@@ -7,16 +7,37 @@ data(){
         password: "",
         loading: false,
         loggedIn: false,
-        error: ""
+        error: "",
+        showPassword:false,
+        acceptedTerms:false,
+        showSuccessModal:false,
     }
 
 },
 methods: {  
+isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            return emailRegex.test(email)
+        },
+
+
 async login() {
+    this.error=""
 if(!this.email || !this.password){
-    alert("Please fill in all fields.");
+    this.error="Please fill in all fields.";
     return;
 }
+
+if (!this.isValidEmail(this.email)) {
+                this.error = "Invalid email"
+                return
+            }
+
+ if (!this.acceptedTerms) {
+                this.error = "You must accept the Terms and Conditions."
+                return
+            }
+
 this.loading = true;
 
  try{  const {data,error} = await supabase.auth.signInWithPassword({
@@ -35,13 +56,17 @@ this.loading = true;
             return;
         }
       this.loggedIn = true;
-      this.$router.push('/');
+      this.showSuccessModal = true
+      setTimeout(() => {
+                    this.$router.push('/')
+                }, 1500)
 
  }
 
  catch (err){
     
-    console.error(err);
+    console.error(err)
+                this.error = "Something went wrong. Please try again."
 
  }
  finally{
@@ -75,8 +100,17 @@ this.loading = true;
             <div>
             <div>
                 <p>Password</p>
-            <input v-model="password" type="password" placeholder="Password" class=" w-full h-10 bg-gray-200  p-2 text-gray-700 placeholder:text-gray-500 border  rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[rgb(46,189,182)]"/>
-            </div>
+                <div>
+            <input v-model="password" :type="showPassword ? 'text' : 'password'" placeholder="Password" class=" w-full h-10 bg-gray-200  p-2 text-gray-700 placeholder:text-gray-500 border  rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[rgb(46,189,182)]"/>
+                                         <button
+                                    type="button"
+                                    @click="showPassword = !showPassword"
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-gray-900 cursor-pointer"
+                                >
+                                    {{ showPassword ? '🙈' : '👁️' }}
+                                </button>  
+        </div>
+             </div>
            <p v-if="error" class="text-red-500">{{ error }}</p>
            </div>
             <div class="flex justify-between items-center">

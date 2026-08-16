@@ -24,7 +24,7 @@ methods:{
     try{
         const gameId = this.$route.params.id;
         this.game = await getGame(gameId);
-        console.log(this.game)
+        
     }
     catch(error){
         console.error("Error fetching game:", error);
