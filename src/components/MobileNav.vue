@@ -31,7 +31,7 @@ export default {
 </script>
 <template>
     <div v-if="showBar" class="fixed inset-0 bg-black/50 z-50" @click="$emit('close')">
-    <div v-if="showBar" @click.stop class=" absolute top-0 right-0 min-h-screen w-[200px] bg-black absolute z-100 rounded-l-xl p-5">
+    <div v-if="showBar" @click.stop class=" absolute top-0 right-0 min-h-screen w-[200px] md:w-[250px] bg-black absolute z-100 rounded-l-xl p-5">
         <div class="flex flex-col h-screen gap-10 text-white text-2xl cursor-pointer pb-10">
             <RouterLink to="/">
                 <img src="../assets/images/logo/Front9-full-logo-dark.png" class="w-[200px] -mt-10 -mb-10">

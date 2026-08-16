@@ -78,8 +78,6 @@ export default {
     </div>
 
 </div>
-<RouterLink  to="/" class="flex items-start justify-start cursor-pointer">
-                <p class="text-[rgb(46,189,182)]">Go Back</p>
-            </RouterLink>
+
 </div>
 </template>

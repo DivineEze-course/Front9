@@ -49,6 +49,9 @@ async mounted(){
     <div v-if="loading" class=" flex flex-col h-screen bg-black gap-10 p-6 lg:p-10">
         <GameSkeleton/>
         <GameSkeleton/>
+        <div class="hidden md:block">
+            <GameSkeleton/>
+        </div>
     </div>
     <div v-else class="bg-black h-full">
     
@@ -62,7 +65,7 @@ async mounted(){
         />
         </div>
         <div class="flex justify-center items-start">
-            <RouterLink  to="/" class="sticky left-30 top-25 z-40 self-start cursor-pointer">
+            <RouterLink  to="/" class="hidden lg:block sticky left-30 top-25 z-40 self-start cursor-pointer">
                 <img src="/icons/arrow-back.svg" class="w-[60px]">
             </RouterLink>
         <GameFull 

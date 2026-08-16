@@ -95,7 +95,7 @@ export default {
             <!-- MOBILE -->
             <div class="flex flex-col lg:hidden bg-black">
 
-                <div class="p-4">
+                <div class="p-4 mt-4">
                     <GameSlideShow />
                 </div>
 

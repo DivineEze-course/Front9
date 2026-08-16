@@ -76,7 +76,7 @@ export default {
     </div>
   <section
     v-if="games.length"
-    class="relative lg:w-[80%] h-[300px] lg:h-[600px] overflow-hidden rounded-2xl shadow-md shadow-[rgb(46,189,182)] :hover:scale-105 transition cursor-pointer"
+    class="relative lg:w-[80%] h-[300px] md:h-[450px] lg:h-[600px] overflow-hidden rounded-2xl shadow-md shadow-[rgb(46,189,182)] :hover:scale-105 transition cursor-pointer"
     @touchstart="handleTouchStart"
     @touchend="handleTouchEnd"
  
