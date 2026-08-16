@@ -29,7 +29,7 @@ export default{
         <input :value="search" 
         @input="$emit('updateSearch', $event.target.value)" 
         type="search" placeholder="Search games..." 
-        class=" text-[rgb(46,189,182)] w-[300px] lg:w-[760px] border-1 border-gray-200 rounded-lg bg-gray-600/10 p-2 hover:border-[rgb(46,189,182)] hover:border-2 focus:outline-[rgb(46,189,182)] focus:bg-white-">
+        class=" text-[rgb(46,189,182)] w-[300px] lg:w-[760px] border-1 border-white/20 rounded-lg bg-gray-600/10 p-2 hover:border-[rgb(46,189,182)] hover:border-2 focus:outline-[rgb(46,189,182)] focus:bg-white-">
         
 
         <div v-if="user" class="flex items-center gap-5 text-white">

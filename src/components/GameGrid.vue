@@ -81,7 +81,7 @@ computed: {
         <div v-if="loading" class="flex flex-col gap-4 lg:grid grid-cols-3 lg:w-[1000px]">
         <GameSkeleton v-for="n in 6" :key="n" />
     </div>   
-<div v-else class="flex flex-col tems-center justify-center lg:grid grid-cols-3 gap-6 ">
+<div v-else class="flex flex-col tems-center justify-center md:grid md:grid-cols-2 lg:grid-cols-3  md:gap-10 gap-6 ">
      
 <RouterLink 
 v-for="game in displayedGames" 
