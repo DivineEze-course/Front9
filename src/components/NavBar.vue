@@ -29,7 +29,7 @@ export default{
         <input :value="search" 
         @input="$emit('updateSearch', $event.target.value)" 
         type="search" placeholder="Search games..." 
-        class=" w-[300px] lg:w-[760px] border-1 border-gray-200 rounded-lg bg-gray-200 p-2 hover:border-[rgb(46,189,182)] hover:border-2 focus:outline-[rgb(46,189,182)] focus:bg-white-">
+        class=" text-[rgb(46,189,182)] w-[300px] lg:w-[760px] border-1 border-gray-200 rounded-lg bg-gray-600/10 p-2 hover:border-[rgb(46,189,182)] hover:border-2 focus:outline-[rgb(46,189,182)] focus:bg-white-">
         
 
         <div v-if="user" class="flex items-center gap-5 text-white">
@@ -52,23 +52,20 @@ export default{
         
         </div>
     </div>
-    <div class="flex flex-col lg:hidden items-center gap-5 justify-center ps-10 pe-10 cursor-pointer mb-10 pt-5">
-        <div class="flex items-center gap-35">
-        <div>
+    <div class="flex  lg:hidden items-center gap-10  justify-around  cursor-pointer p-5">
             <RouterLink to="/">
-                <img :src="img"  >
+                <img :src="img"  class="w-[360px]">
             </RouterLink>
-        </div>
-        <div class=" w-[120px]" @click="$emit('toggleBar')">
-        <img src="/icons/menu.png" class="w-[50px]" alt="">
-        </div>
-        </div>
+              
 
         <input :value="search" 
         @input="$emit('updateSearch', $event.target.value)" 
         type="search" placeholder="Search games..." 
-        class=" w-full border-1 border-gray-200 rounded-lg bg-gray-200 p-2 hover:border-[rgb(46,189,182)] hover:border-2 focus:outline-[rgb(46,189,182)] focus:bg-white-">
-        
+        class="text-[rgb(46,189,182)] w-full border-1 font-bold border-gray-200/50 rounded-lg bg-gray-600/10 p-2 hover:border-[rgb(46,189,182)] hover:border-2 focus:outline-[rgb(46,189,182)] focus:bg-white-">
+
+        <div class=" w-[120px]" @click="$emit('toggleBar')">
+        <img src="/icons/menu.png" class="w-[20px]" alt="">
+        </div>
 
     </div>
 </template>

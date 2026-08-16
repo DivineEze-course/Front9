@@ -53,13 +53,18 @@ async mounted(){
     <div v-else class="bg-black h-full">
     
     <div class="">
+        <div class="sticky top-0 z-50 bg-black">
         <NavBar :search="search" @updateSearch="search = $event" @toggleBar="toggleBar()"/>
         <MobileNav
             :showBar="showBar"
             @close="showBar = false"
             @showLogoutModal="showLogoutModal = true"
         />
-        <div class="flex justify-center items-center">
+        </div>
+        <div class="flex justify-center items-start">
+            <RouterLink  to="/" class="sticky left-30 top-25 z-40 self-start cursor-pointer">
+                <img src="/icons/arrow-back.svg" class="w-[60px]">
+            </RouterLink>
         <GameFull 
             :title="game?.title"
             :thumbnail="game?.thumbnail"

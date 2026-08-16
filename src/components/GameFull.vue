@@ -31,7 +31,11 @@ export default {
 }
 </script>
 <template>
-<div class="flex flex-col p-5 w-full items-center w-[1000px] gap-10">
+    
+<div class="flex flex-col p-5 w-full lg:items-center w-[1000px] gap-10">
+    <RouterLink  to="/" class="cursor-pointer lg:hidden">
+                <p class="text-[rgb(46,189,182)]">Go Back</p>
+            </RouterLink>
     <div class="lg:relative flex flex-col lg:flex-row gap-10">
         <img :src="thumbnail" class="rounded-md lg:w-[1000px]" :alt="title" >
         <div class="lg:absolute flex flex-col justify-between gap-5 lg:gap-2 lg:bg-black/60 p-4  lg:w-[500px] lg:h-[250px] rounded-lg lg:rounded-r-lg 
@@ -74,5 +78,8 @@ export default {
     </div>
 
 </div>
+<RouterLink  to="/" class="flex items-start justify-start cursor-pointer">
+                <p class="text-[rgb(46,189,182)]">Go Back</p>
+            </RouterLink>
 </div>
 </template>

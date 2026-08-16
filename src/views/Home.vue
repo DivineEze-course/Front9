@@ -63,14 +63,14 @@ export default {
 
 <template>
     <div class="bg-black min-h-screen">
-
+<div class="sticky top-0 z-50 bg-black ">
         <!-- Navbar -->
         <NavBar
             :search="search"
             @updateSearch="search = $event"
             @toggleBar="toggleBar"
         />
-
+</div>
         <!-- Mobile navigation -->
         <MobileNav
             :showBar="showBar"
@@ -102,7 +102,7 @@ export default {
                 <div class="flex flex-col">
 
                     <Header />
-
+<div class="sticky top-20 z-40 bg-black/80 p-4 pt-0">
                     <Filters
                         :currentCategory="currentCategory"
                         :currentPlatform="currentPlatform"
@@ -112,7 +112,7 @@ export default {
                         @updatePlatform="currentPlatform = $event"
                         @updateGenres="currentGenres = $event"
                     />
-
+</div>
                     <GameGrid
                         :search="search"
                         :category="currentCategory"
@@ -132,9 +132,9 @@ export default {
                     <GameSlideShow />
                 </div>
 
-                <div class="flex gap-15 justify-center">
+                <div class="flex gap-15 justify-center items-start">
 
-                    <div>
+                    <div class="sticky top-16 z-40 self-start ">
                         <Filters
                             :currentCategory="currentCategory"
                             :currentPlatform="currentPlatform"
@@ -168,7 +168,7 @@ export default {
             v-else
             class="bg-black min-h-screen pt-5 flex gap-15 justify-center"
         >
- <div class="hidden lg:block">
+ <div class="hidden lg:block sticky top-16 z-40 ">
                         <Filters
                             :currentCategory="currentCategory"
                             :currentPlatform="currentPlatform"

@@ -11,7 +11,7 @@ export default{
         return {
             openDropdown:null,
             categories:[
-                {name: '',
+                {name: 'All',
                 value: ''
                 },
                 {name: 'Relevance',
@@ -113,8 +113,8 @@ export default{
 </script>
 
 <template>
-    <div class="lg:hidden">
-    <div class="flex gap-3 mt-5 justify-center lg:justify-normal">
+    <div class="lg:hidden ps-15 pe-15">
+    <div class="flex gap-3 mt-5  justify-center lg:justify-normal">
         <FilterBtns :name="currentCategory.name" order="Sort by:" :dropdownItems="categories" @toggle="toggleDropdown('categories')" :boolean="openDropdown === 'categories'" @select="selectCategory"/>
         <FilterBtns :name="currentPlatform.name" :dropdownItems="platform" @toggle="toggleDropdown('platform')" :boolean="openDropdown === 'platform'" @select="selectPlatform"/>
         <FilterBtns :name="currentGenres.name" :dropdown-items="genres" @toggle="toggleDropdown('genres')" :boolean="openDropdown === 'genres'" @select="selectGenres"/>
