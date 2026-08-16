@@ -9,7 +9,7 @@ data(){
         loggedIn: false,
         error: "",
         showPassword:false,
-        acceptedTerms:false,
+        
         showSuccessModal:false,
     }
 
@@ -33,10 +33,6 @@ if (!this.isValidEmail(this.email)) {
                 return
             }
 
- if (!this.acceptedTerms) {
-                this.error = "You must accept the Terms and Conditions."
-                return
-            }
 
 this.loading = true;
 
