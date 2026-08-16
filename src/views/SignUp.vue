@@ -12,6 +12,7 @@ export default {
       loading: false,
       error: "",
       showSuccessModal:false,
+      showPassword:false
     };
   },
 
@@ -130,14 +131,24 @@ export default {
               />
             </div>
             <div>
-              <div>
+              <div class="">
                 <p class="text-[rgb(46,189,182)] font-bold">Password</p>
+                <div class=" flex items-center ">
                 <input
+                
                   v-model="password"
-                  type="password"
+                  :type="showPassword ? 'text' : 'password'"
                   placeholder="Password"
-                  class="w-full h-10 bg-gray-300 p-2 text-gray-700 placeholder:text-gray-500 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[rgb(46,189,182)]"
+                  class="relative w-full h-10 bg-gray-300 p-2 text-gray-700 placeholder:text-gray-500 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[rgb(46,189,182)]"
                 />
+                 <button
+                                    type="button"
+                                    @click="showPassword = !showPassword"
+                                    class="absolute right-5 text-gray-600 hover:text-gray-900 cursor-pointer"
+                                >
+                                   <img :src="showPassword ? '/icons/eye-slash.svg' : '/icons/eye.svg'" class="w-[30px]"> 
+                                </button>
+                                </div>
               </div>
               <p v-if="error" class="text-red-500 pt-2">{{ error }}</p>
             </div>
